@@ -1,9 +1,6 @@
 /**
  * @system watchdog
  * @status handwritten
- * @edit edit directly
- *
- * Configured-primitive entry point for the watchdog package.
  */
 
 import { watchdogRegistry } from "./registry.ts";

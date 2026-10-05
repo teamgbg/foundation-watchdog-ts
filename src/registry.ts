@@ -1,9 +1,6 @@
 /**
  * @system watchdog
  * @status handwritten
- * @edit edit directly
- *
- * Process-global registry of all watchdogs for observability and control.
  */
 
 import type { WatchdogHandle, WatchdogStatus } from "./types.ts";

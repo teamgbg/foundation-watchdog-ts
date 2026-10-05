@@ -1,10 +1,6 @@
 /**
  * @system watchdog
  * @status handwritten
- * @edit edit directly
- *
- * Periodic health probe with automatic state tracking, structured logging,
- * degraded/recovered callbacks, and auto-registration into the global registry.
  */
 
 import { watchdogRegistry } from "./registry.ts";
@@ -90,12 +86,7 @@ export function createWatchdog(
 			intervalId = setInterval(() => {
 				void runCheck();
 			}, intervalMs);
-			// Unref so the timer doesn't keep the event loop polling short between
-			// fires. The service stays alive via Bun.serve() (always ref'd); the
-			// watchdog still fires on schedule but doesn't contribute to the epoll
-			// minimum-expiry between fires. Without this, N phased second-scale
-			// watchdog timers produce a short observed epoll timeout even though
-			// no single timer is short (idle-costs-nothing).
+			// Unref: without it N phased watchdog timers produce a short observed epoll timeout between fires even though no single timer is short (idle-costs-nothing).
 			intervalId.unref?.();
 		},
 

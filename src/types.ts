@@ -1,9 +1,6 @@
 /**
  * @system watchdog
  * @status handwritten
- * @edit edit directly
- *
- * Type definitions for the watchdog primitive.
  */
 
 export interface WatchdogResult {
